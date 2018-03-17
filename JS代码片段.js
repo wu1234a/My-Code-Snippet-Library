@@ -15,3 +15,15 @@ function siblings(n) {
 	}
 	return nodes;
 }
+
+
+// 去除原生JS childNode子节点中的空白节点
+function cleanNode(oElement) {
+	for (var i = 0; i < oElement.childNodes.length; i++) {
+		var oNodes = oElement.childNodes[i];
+		if (oNodes.nodeType==3 && /\s+/.test(oNodes.nodeValue)) {
+			oElement.removeChild(oNodes);
+		}
+	}
+	return oElement;
+}
