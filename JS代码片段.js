@@ -21,7 +21,7 @@ function siblings(n) {
 function cleanNode(oElement) {
 	for (var i = 0; i < oElement.childNodes.length; i++) {
 		var oNodes = oElement.childNodes[i];
-		if (oNodes.nodeType==3 && /\s+/.test(oNodes.nodeValue)) {
+		if (oNodes.nodeType==3 && /^\s+$/.test(oNodes.nodeValue)) {
 			oElement.removeChild(oNodes);
 		}
 	}
