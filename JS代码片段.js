@@ -1,4 +1,16 @@
-// js原生遍历兄弟元素节点
+ /* 作用：js原生遍历兄弟元素节点
+** 参数：
+** n  指定节点
+**
+** 方法&属性：
+** previousSibling   前一节点
+** nodeType          节点类型 1：元素节点  2：属性节点  3：文本节点
+** push()            向数组末尾添加元素，并返回数组新长度
+** nextSibling       后一节点   
+** removeChild()  移除子节点
+**
+** 说明：通过向前，向后不断搜索添加元素节点
+*/
 function siblings(n) {
 	var nodes = [];
 	var prev = n.previousSibling;
@@ -16,8 +28,20 @@ function siblings(n) {
 	return nodes;
 }
 
-
-// 去除原生JS childNode子节点中的空白节点
+/* 作用：去除原生JS childNode子节点中的空白节点
+** 参数：
+** oElement  父节点
+**
+** 方法&属性：
+** childNodes     子节点
+** length         长度
+** nodeType       节点类型 1：元素节点  2：属性节点  3：文本节点
+** nodeValue      节点值
+** test()         检测一个字符串是否匹配某个模式   
+** removeChild()  移除子节点
+**
+** 说明：判断子节点类型是否为文本节点并用正则检测节点值是否为空。
+*/
 function cleanNode(oElement) {
 	for (var i = 0; i < oElement.childNodes.length; i++) {
 		var oNodes = oElement.childNodes[i];
