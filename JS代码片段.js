@@ -74,3 +74,23 @@ function deduplication(arr) {
 	});
 	return newarr;
 }
+
+/* 作用：检测数组中是否有某参数的重复项 
+** 参数：
+** arr     目标数组
+** element 目标参数
+**
+** 方法：
+** indexOf() 返回某个指定的字符串值在字符串中首次出现的位置
+**
+** 说明：检测重复元素依靠的是 indexOf 
+** 总是返回第一个元素的位置，如果数组中没有该数，则返回-1，否则返回
+** 该数的位置索引
+*/
+function isRepeat(element, arr) {
+	if(arr.indexOf(par) === -1) {
+		return true;
+	}else{
+		return false;
+	}
+}
