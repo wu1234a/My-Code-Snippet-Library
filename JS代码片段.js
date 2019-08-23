@@ -88,7 +88,7 @@ function deduplication(arr) {
 ** 该数的位置索引
 */
 function isRepeat(element, arr) {
-	if(arr.indexOf(par) === -1) {
+	if(arr.indexOf(element) === -1) {
 		return true;
 	}else{
 		return false;
