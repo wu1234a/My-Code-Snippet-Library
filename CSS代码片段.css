@@ -1,0 +1,129 @@
+CSS下划线删除线 {
+  text-decoration: underline;
+  text-decoration: none;
+  text-decoration: line-through;
+  text-decoration: overline;
+}
+
+Css 卡片阴影效果（片段的 Card 效果）{
+  /*
+  **  参数一：水平方向阴影偏移距离，负值往左偏
+  **  参数二：垂直方向阴影偏移距离，负值往上偏
+  **  参数三：扩散大小
+  **  参数四：阴影尺寸
+  **  参数五：颜色
+  */
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
+}
+
+Css 去除 img 标签底部空白区域{
+  /* 将 img 标签变为块级元素来解决这个问题 */
+  display: block;
+}
+
+/* 去除 input 标签获得焦点时出现的边框效果 */
+input {
+  outline: none;
+}
+
+css 超出文本省略 {
+  /* 单行 */
+  overflow: hidden;
+  /* 
+  ** text-overflow: clip|ellipsis|string;
+  ** 当文本溢出包含元素时发生的事情
+  ** clip：修剪文本
+  ** ellipsis：显示省略符号来代表被修剪的文本
+  ** string：使用给定的字符串来代表被修剪的文本
+  ** 所有浏览器都支持
+  */
+  text-overflow:ellipsis;
+  white-space: nowrap;
+
+  /* 多行 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  /* 超出 3 行的省略 */
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+css 超出文本换行 {
+  text-align: justify;
+  text-justify: newspaper;
+  word-break: break-all;
+}
+
+CSS 文字模糊 {
+  /* 第三个值越大模糊程度越高 */
+  text-shadow: 0 0 5px red;
+  color: transparent;
+}
+
+/* 
+** 一个汉字宽度的空白占位符
+** &#12288; 
+*/
+
+CSS 字体渐变 {
+  background-image:-webkit-linear-gradient(bottom,red,#fd8403,yellow); 
+  -webkit-background-clip:text; 
+  -webkit-text-fill-color:transparent;
+}
+ 
+/* 
+** ElementUI 自适应尺寸范围 
+** 单位为 px
+
+** xs 0 - 767
+** sm 768 - 991
+** md 992 - 1199
+** lg 1200 - 1919
+** xl 1920 - 以上 
+*/
+
+
+/* css 首字母选择器 */
+:first-letter
+
+p:first-letter{
+  color: red
+}
+
+禁止文字的选中 {
+  moz-user-select: -moz-none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* 一行 css 使网站全灰 */
+body {
+    filter: grayscale(100%);
+}
+
+/* 隐藏 input type 为number 时的小箭头。 */
+input[type=number] {
+  -moz-appearance:textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* CSS 消除浏览器记住密码后自动为输入框填充的背景色 */
+input:-webkit-autofill {
+    box-shadow: inset 0 0 0 1000px #fff;
+}
+
+/* 图片不拉伸填充满区域 */
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
