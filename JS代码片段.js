@@ -94,3 +94,55 @@ function isRepeat(element, arr) {
 		return false;
 	}
 }
+
+/**
+* 描述: ajax请求封装
+* @param {String} url 请求地址
+* @param {String} method 请求方式
+* @param {Object} params get请求的参数
+* @param {Object} data post请求的参数
+* @param {Function} success 成功的回调
+* @param {Function} error 失败的回调
+*/
+const request = ({ url = '', method = 'get', params = {}, data = {}, success, error }) => {
+	return new Promise((resolve, reject) => {
+		// 创建ajax
+		let xhr
+		if (window.XMLHttpRequest) xhr = new XMLHttpRequest()	//判断XMLHttpRequest是否存在
+		else xhr = new ActiveXObject('MicroSoft.XMLHTTP')	//兼容老版本ie
+
+		// 监听请求完成
+		xhr.onreadystatechange = function () {
+			// 固定写法 readyState 表示 ajax的状态 
+			//ajax的状态总共有（0 1 2 3 4 ）五种状态 状态为4表示请求完成 status === 200表示成功
+			if (xhr.readyState == 4) { //请求完成
+				if(xhr.status === 200) {	//http请求状态为200 成功
+					let res = xhr.responseText;  //接收响应结果 结果是JSON字符串
+					// 转化为对象 传给成功的回调
+					success && success(JSON.parse(res)) //成功的回调
+					resolve(JSON.parse(res)) //promise 成功 返回
+				}else { //状态码不为200 失败
+					error && error(xhr.status)	//失败的回调
+					reject(xhr.status) //promise 失败 返回
+				}
+			}
+		}
+		// 根据请求方式发送请求
+		switch (method.toUpperCase()) {
+			case "GET":
+				//构建请求的url
+				let reqUrl = url
+				if (Object.keys(params).length > 0) reqUrl += '?' + Object.keys(params).map(key => key + '=' + params[key]).join('&') //url拼接请求参数
+				xhr.open('GET', reqUrl);
+				xhr.send() //发送请求
+				break
+			case "POST":
+				xhr.open('POST', url);
+				xhr.setRequestHeader('Content-Type', 'application/json') //设置请求头为json
+				if (Object.keys(data).length > 0) xhr.send(JSON.stringify(data))	//传入数据 发送请求
+				else xhr.send()	//无参请求
+				break
+		}
+	})
+}
+
